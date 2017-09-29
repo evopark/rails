@@ -1,3 +1,7 @@
+*   Support redis-rb 4.0.
+
+    *Jeremy Daer*
+
 ## Rails 5.0.6 (September 07, 2017) ##
 
 *   No changes.
