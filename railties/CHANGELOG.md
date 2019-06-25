@@ -1,3 +1,29 @@
+## Rails 5.0.7.2 (March 11, 2019) ##
+
+*   Generate random development secrets
+
+    A random development secret is now generated to tmp/development_secret.txt
+
+    This avoids an issue where development mode servers were vulnerable to
+    remote code execution.
+
+    Fixes CVE-2019-5420
+
+    *Eileen M. Uchitelle*, *Aaron Patterson*, *John Hawthorn*
+
+
+## Rails 5.0.7.1 (November 27, 2018) ##
+
+*   No changes.
+
+
+## Rails 5.0.7 (March 29, 2018) ##
+
+Fix check for minimum Ruby version to correctly identify Ruby 2.2.10.
+
+*shia*
+
+
 ## Rails 5.0.6 (September 07, 2017) ##
 
 *   No changes.

@@ -1,3 +1,19 @@
+*   Back port Rails 5.2 `reverse_order` Arel SQL literal fix.
+
+    *Matt Jones*, *Brooke Kuhlmann*
+
+## Rails 5.0.7.2 (March 11, 2019) ##
+
+*   No changes.
+
+
+## Rails 5.0.7.1 (November 27, 2018) ##
+
+*   No changes.
+
+
+## Rails 5.0.7 (March 29, 2018) ##
+
 *   Apply time column precision on assignment.
 
     PR #20317 changed the behavior of datetime columns so that when they

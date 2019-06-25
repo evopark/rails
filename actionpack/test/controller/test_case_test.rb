@@ -221,6 +221,27 @@ XML
     assert_equal params.to_query, @response.body
   end
 
+  def test_params_round_trip
+    params = {"foo"=>{"contents"=>[{"name"=>"gorby", "id"=>"123"}, {"name"=>"puff", "d"=>"true"}]}}
+    post :test_params, params: params.dup
+
+    controller_info = { "controller" => "test_case_test/test", "action" => "test_params" }
+    assert_equal params.merge(controller_info), JSON.parse(@response.body)
+  end
+
+  def test_handle_to_params
+    klass = Class.new do
+      def to_param
+        "bar"
+      end
+    end
+
+    post :test_params, params: { foo: klass.new }
+
+    assert_equal JSON.parse(@response.body)["foo"], "bar"
+  end
+
+
   def test_body_stream
     params = Hash[:page, { name: 'page name' }, 'some key', 123]
 
@@ -887,6 +908,14 @@ XML
   def test_request_format_kwarg_overrides_params
     get :test_format, format: 'json', params: { format: 'html' }
     assert_equal 'application/json', @response.body
+  end
+
+  def test_request_format_kwarg_doesnt_mutate_params
+    params = { foo: 'bar' }.freeze
+
+    assert_nothing_raised do
+      get :test_format, format: 'json', params: params
+    end
   end
 
   def test_deprecated_request_format_params_with_session
